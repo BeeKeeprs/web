@@ -1,13 +1,13 @@
 /* 마이페이지  */
 export { default as BeehiveMap } from "./beehiveMap/ui/beehiveMap";
 
-/*마이프로필*/
+/* 마이프로필 */
 export { default as MyProfile } from "./mypage/myProfile/ui/myProfile";
 
-/*추천 이력*/
+/* 추천 이력 */
 export { default as RecommendedList } from "./mypage/recommendedList/ui/recommendedList";
 
-/*질병진단 이력 */
+/* 질병진단 이력 */
 export { default as DiagnosisHistory } from "./mypage/diagnosisHistory/ui/diagnosisHistory";
 
 /* 내 판매 물품  */
