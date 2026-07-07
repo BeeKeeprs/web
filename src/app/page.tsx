@@ -1118,7 +1118,11 @@ export default function Landing() {
 
             <div className="space-y-2">
               {[
-                { date: "2025.11", title: "멋쟁이사자 창업부트캠프 상위 15팀", highlight: true  },
+                { date: "2026.06~", title: "NH에그테크 청년창업캠퍼스 수료중", highlight: true },
+                { date: "2026.06", title: "대구여성창업지원사업 300만원 확보" },
+                { date: "2026.06", title: "신한스퀘어브릿지 대구 / 영남대 창업보육센터 입주" },
+                { date: "2026.04", title: "경남 자원연계형 로컬활성화 지원사업X크립톤 1800만원 사업비 확보" },
+                { date: "2025.11", title: "멋쟁이사자 창업부트캠프 상위 15팀" },
                 { date: "2025.11", title: "RISE 시제품 제작 지원 800만원" },
                 { date: "2025.11", title: "부울경 로컬창업 부트캠프 150만원" },
                 { date: "2025.08", title: "농림축산식품 데이터 경진대회 우수상" },
