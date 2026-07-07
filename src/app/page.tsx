@@ -1118,8 +1118,7 @@ export default function Landing() {
 
             <div className="space-y-2">
               {[
-                { date: "2025.11", title: "경산지역 AI 창업 경진대회 최우수상", highlight: true },
-                { date: "2025.11", title: "멋쟁이사자 창업부트캠프 상위 15팀" },
+                { date: "2025.11", title: "멋쟁이사자 창업부트캠프 상위 15팀", highlight: true  },
                 { date: "2025.11", title: "RISE 시제품 제작 지원 800만원" },
                 { date: "2025.11", title: "부울경 로컬창업 부트캠프 150만원" },
                 { date: "2025.08", title: "농림축산식품 데이터 경진대회 우수상" },

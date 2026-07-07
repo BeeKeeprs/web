@@ -209,7 +209,7 @@ export default function Search() {
         {/* 검색 영역 스켈레톤 */}
         <div className="w-[20%] min-w-[300px] h-[calc(100vh-80px)] flex flex-col items-start border-r border-[#E5E7EB] relative z-20 bg-white">
           {/* 벌 타입 필터 스켈레톤 */}
-          <div className="w-full p-4 border-b border-gray-200 flex-shrink-0 h-[80px] flex items-center">
+          <div className="w-full p-4 border-b border-gray-200 shrink-0 h-[80px] flex items-center">
             <div className="flex gap-2 animate-pulse">
               <div className="h-8 bg-gray-300 rounded-full w-12"></div>
               <div className="h-8 bg-gray-300 rounded-full w-16"></div>
@@ -226,7 +226,7 @@ export default function Search() {
         </div>
 
         {/* 지도 영역 큰 콘텐츠 - LCP 우선순위 확보 */}
-        <div className="w-full h-[calc(100vh-80px)] relative bg-gradient-to-br from-blue-50 to-blue-100 flex flex-col items-center justify-center">
+        <div className="w-full h-[calc(100vh-80px)] relative bg-linear-to-br from-blue-50 to-blue-100 flex flex-col items-center justify-center">
           {/* 대형 로고/브랜딩 콘텐츠 */}
           <div className="text-center max-w-md mx-auto mb-8">
             <div className="text-6xl mb-4">🗺️</div>
@@ -270,7 +270,7 @@ export default function Search() {
     <div className="flex flex-row h-[calc(100vh-80px-90px)] relative">
       {!isOpen && (
         <div
-          className="absolute top-0 left-0 z-[10] p-3 bg-yellow-400 text-white font-bold rounded-r-full shadow-lg cursor-pointer hover:bg-yellow-500 transition-colors duration-200 text-center"
+          className="absolute top-0 left-0 z-10 p-3 bg-yellow-400 text-white font-bold rounded-r-full shadow-lg cursor-pointer hover:bg-yellow-500 transition-colors duration-200 text-center"
           onClick={() => setIsOpen(!isOpen)}
         >
           상품 목록 보기
@@ -333,7 +333,7 @@ export default function Search() {
                           : product.name}
                       </p>
                       <p
-                        className="text-[#6B7280] font-medium text-lg flex-shrink-0"
+                        className="text-[#6B7280] font-medium text-lg shrink-0"
                         aria-hidden="true"
                       >
                         &gt;
@@ -346,7 +346,7 @@ export default function Search() {
                           alt="위치 아이콘"
                           width={12}
                           height={12}
-                          className="mr-1 flex-shrink-0"
+                          className="mr-1 shrink-0"
                           style={{
                             width: "12px",
                             height: "12px",
@@ -359,7 +359,7 @@ export default function Search() {
                           {getShortAddress(product.businessAddress)}
                         </p>
                       </div>
-                      <p className="text-[#6B7280] text-xs flex-shrink-0 ml-2">
+                      <p className="text-[#6B7280] text-xs shrink-0 ml-2">
                         업체정보
                       </p>
                     </div>
