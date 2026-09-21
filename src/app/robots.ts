@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { siteUrl } from './site'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://webeelab.com'
+  const baseUrl = siteUrl.origin
 
   return {
     rules: [

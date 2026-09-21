@@ -1,0 +1,5 @@
+.pr-worktree/
+design/
+.env*
+dev.log
+*.tsbuildinfo
