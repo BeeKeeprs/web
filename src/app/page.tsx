@@ -35,8 +35,8 @@ export default function LandingPage() {
         본문으로 바로가기
       </a>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="webee 홈">
-          webee<span>.</span>
+        <Link className="wordmark" href="/" aria-label="ourbee 홈">
+          ourbee<span>.</span>
         </Link>
         <nav aria-label="주 메뉴">
           <a href="#app-experience">앱 체험</a>
@@ -147,7 +147,7 @@ export default function LandingPage() {
           </div>
           <a
             className="contact-link"
-            href="mailto:support@webee.kr?subject=webee%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98"
+            href="mailto:support@webee.kr?subject=ourbee%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98"
           >
             support@webee.kr <ArrowUpRight aria-hidden="true" />
           </a>
@@ -155,10 +155,10 @@ export default function LandingPage() {
       </main>
       <footer className="site-footer">
         <Link href="/" className="wordmark">
-          webee<span>.</span>
+          ourbee<span>.</span>
         </Link>
         <span>더 건강한 수정 환경을 만드는 연결</span>
-        <small>© {new Date().getFullYear()} webee</small>
+        <small>© {new Date().getFullYear()} ourbee</small>
         <a href="#main" className="back-top">
           맨 위로 <ArrowUpRight size={15} />
         </a>

@@ -93,7 +93,7 @@ export default function ProductShowcase() {
           <p>
             온도를 지키는 본체와, 내 손안의 관리.
             <br />
-            실제 제품과 앱 기록으로 webee를 만나보세요.
+            실제 제품과 앱 기록으로 ourbee를 만나보세요.
           </p>
         </div>
         <div className="performance-summary">
