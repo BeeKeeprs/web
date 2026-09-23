@@ -42,3 +42,5 @@ pnpm build
 ## 방문 분석
 
 모든 페이지에 Google Analytics 4(`G-QLKGH4HHRP`)와 Google Tag Manager(`GTM-PH5ZNKVV`)를 공통 레이아웃에서 한 번씩 불러옵니다. GTM 컨테이너에서 같은 GA4 측정 ID를 다시 실행하면 페이지뷰가 중복 집계되므로, GTM에서는 별도의 GA4 구성 태그를 추가하지 않습니다.
+
+Meta Pixel(`1528209969075771`)은 모든 페이지에서 `PageView`를 기록합니다. Facebook 도메인 인증 메타태그는 JavaScript가 아닌 서버 렌더링된 `<head>`에 포함됩니다.
