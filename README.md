@@ -38,3 +38,7 @@ pnpm build
 메타데이터·사이트맵·robots는 `SITE_URL`을 우선 사용하고, 미설정 시 Vercel의 `VERCEL_PROJECT_PRODUCTION_URL`을 사용합니다. 로컬 기본값은 `http://localhost:3000`입니다. 새 도메인을 연결할 때 `SITE_URL`을 지정하고 다시 배포합니다.
 
 `.vercelignore`는 로컬 환경변수 파일, 디자인 작업 기록, 별도 작업 폴더를 CLI 업로드에서 제외합니다. 인증정보와 `.vercel` 연결 설정은 커밋하지 않습니다.
+
+## 방문 분석
+
+모든 페이지에 Google Analytics 4(`G-QLKGH4HHRP`)와 Google Tag Manager(`GTM-PH5ZNKVV`)를 공통 레이아웃에서 한 번씩 불러옵니다. GTM 컨테이너에서 같은 GA4 측정 ID를 다시 실행하면 페이지뷰가 중복 집계되므로, GTM에서는 별도의 GA4 구성 태그를 추가하지 않습니다.
