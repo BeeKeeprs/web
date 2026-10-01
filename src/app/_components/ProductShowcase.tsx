@@ -86,18 +86,18 @@ export default function ProductShowcase() {
       <div className="showcase-heading">
         <div>
           <h1 id="hero-title">
-            바깥 온도는 달라도,
+            벌통의 목표 온도,
             <br />
-            <span>벌통 안은 26.5°C.</span>
+            <span>농가가 직접 정하다.</span>
           </h1>
           <p>
-            온도를 지키는 본체와, 내 손안의 관리.
+            여름철 사용기간과 벌의 활동성이 걱정되는 농가를 위해.
             <br />
-            실제 제품과 앱 기록으로 ourbee를 만나보세요.
+            정온 제어 제품과 앱 기록을 살펴보세요. 효과는 농가 POC 중입니다.
           </p>
         </div>
         <div className="performance-summary">
-          <span className="performance-source">제공된 현장 테스트 사례</span>
+          <span className="performance-source">별도 현장 테스트 사례 · POC 검증 중</span>
           <div className="performance-numbers">
             <div>
               <strong>
@@ -115,7 +115,7 @@ export default function ProductShowcase() {
           <p>
             목표 26.5°C 설정 시 관찰한 사례입니다.
             <br />
-            아래 앱 캡처의 측정 구간과는 별도입니다.
+            아래 35분 앱 기록과는 별도 사례입니다. 장기 성능·활동성·사용기간은 농가 POC에서 검증 중입니다.
           </p>
         </div>
       </div>
