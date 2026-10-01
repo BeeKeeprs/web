@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { siteUrl } from "./site";
+import ScrollMotion from "./_components/ScrollMotion";
+import { SiteHeader, SiteFooter } from "./_components/SiteChrome";
 
 const googleAnalyticsId = "G-QLKGH4HHRP";
 const googleTagManagerId = "GTM-PH5ZNKVV";
 const metaPixelId = "1528209969075771";
 const facebookDomainVerification = "pmhi0s1yg2ao4i5a1dlmza59y1u1i9";
 
-const title = "ourbee 아워비 | 온도를 지키는 본체, 손안의 스마트벌통 관리";
+const title = "ourbee 아워비 | 벌통의 온도, 농가가 직접 정하다";
 const description =
-  "벌통 안의 온도와 습도, 출입구 관리까지. ourbee 스마트 벌통과 개폐기로 수정벌 관리에 필요한 정보를 연결합니다.";
+  "농가의 하루에서 시작한 스마트벌통과 스마트개폐기. 목표 온도 설정, 온습도 기록과 출입구 관리를 아워비에서 살펴보세요.";
 export const metadata: Metadata = {
   title,
   description,
@@ -35,14 +37,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
-      <Script id="google-tag-manager" strategy="beforeInteractive">
+      <head>
+        <Script id="google-tag-manager" strategy="beforeInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${googleTagManagerId}');`}
-      </Script>
-      <head>
+        </Script>
         <meta
           name="facebook-domain-verification"
           content={facebookDomainVerification}
@@ -70,7 +72,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1" alt="" />`,
           }}
         />
-        {children}
+        <a className="skip-link" href="#main-content">본문으로 바로가기</a>
+        <SiteHeader />
+        <div id="main-content">{children}</div>
+        <SiteFooter />
+        <ScrollMotion />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
           strategy="afterInteractive"

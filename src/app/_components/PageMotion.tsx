@@ -23,7 +23,7 @@ export default function PageMotion() {
     resizeObserver.observe(document.body);
     schedule();
     const targets = document.querySelectorAll<HTMLElement>(
-      ".product-row, .section-heading, .faq-section, .contact-section",
+      ".scroll-reveal, .showcase-stage > *, .performance-record-grid, .product-row, .section-heading, .faq-section, .contact-section",
     );
     const observer = new IntersectionObserver(
       (entries) => {
@@ -34,7 +34,7 @@ export default function PageMotion() {
           }
         });
       },
-      { threshold: 0.08 },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       targets.forEach((target) => {

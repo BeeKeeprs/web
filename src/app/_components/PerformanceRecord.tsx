@@ -25,9 +25,9 @@ export default function PerformanceRecord() {
         <div>
           <span className="section-number">실제 앱에 남은 기록</span>
           <h2 id="performance-title">
-            숫자로 확인하는
+            35분 기록에서 본
             <br />
-            온도 유지.
+            벌통 내부 온도.
           </h2>
         </div>
         <p>
@@ -140,7 +140,7 @@ export default function PerformanceRecord() {
       </div>
       <p className="performance-footnote">
         출처: 제공된 앱 캡처의 5분 간격 기록 8개. 외부 10–20°C 조건의 테스트
-        사례와는 다른 측정 구간입니다. 원본에 보이지 않는 측정값은 추가하지
+        사례와는 다른 측정 구간입니다. 장기 정온 성능이나 벌의 활동성 효과를 입증하는 기록은 아닙니다. 원본에 보이지 않는 측정값은 추가하지
         않았습니다.
       </p>
     </section>
