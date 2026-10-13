@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+/.chrome-pilot-preview/
+/.edge-pilot-preview/
 
 # production
 /build

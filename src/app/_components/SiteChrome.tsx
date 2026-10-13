@@ -10,6 +10,7 @@ export function SiteHeader() {
           <Link href="/products">제품</Link>
           <Link href="/about">브랜드</Link>
           <Link href="/app" aria-label="앱과 데이터"><span className="nav-desktop-label">앱과 데이터</span><span className="nav-mobile-label">앱</span></Link>
+          <Link className="nav-pilot" href="/pilot">100일 실증농가 모집</Link>
           <Link href="/contact">문의하기</Link>
         </nav>
         <div className="nav-note"><Leaf size={16} aria-hidden="true" /><span>농가의 내일을 아워비와 함께</span></div>
@@ -27,7 +28,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} OurBee</span>
-        <div><Link href="/products">제품</Link><Link href="/app">앱과 데이터</Link><Link href="/about">브랜드</Link><Link href="/contact">문의하기</Link></div>
+        <div><Link href="/products">제품</Link><Link href="/app">앱과 데이터</Link><Link href="/about">브랜드</Link><Link href="/pilot">100일 실증농가 모집</Link><Link href="/contact">문의하기</Link></div>
         <a href="https://www.instagram.com/ourbee.lab/" target="_blank" rel="noreferrer" aria-label="아워비 인스타그램"><Instagram size={18} /></a>
       </div>
     </footer>

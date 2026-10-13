@@ -27,6 +27,11 @@ export default function HomePage() {
         <a className="scroll-cue" href="#ecosystem">SCROLL TO EXPLORE <ArrowDown size={14} /></a>
       </section>
 
+      <section className="home-pilot-banner section-wrap" aria-label="100일 실증농가 모집" data-reveal>
+        <div><span>겨울철 현장 실험</span><h2>수정벌 사용 농가를 찾습니다.</h2><p>아워비 스마트벌통을 100일간 무상으로 사용하고, 현장의 경험을 들려주세요.</p></div>
+        <Link href="/pilot">100일 실증농가 모집 보기 <ArrowRight size={19} /></Link>
+      </section>
+
       <section className="ecosystem-section" id="ecosystem">
         <div className="section-wrap">
           <div className="ecosystem-heading" data-reveal>

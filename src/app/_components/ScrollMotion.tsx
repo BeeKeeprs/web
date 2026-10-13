@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ScrollMotion() {
+  const pathname = usePathname();
   useEffect(() => {
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motionPreference.matches || !('IntersectionObserver' in window)) return;
@@ -29,6 +31,6 @@ export default function ScrollMotion() {
     }, { threshold: 0.15 });
     if (ecosystem) connectObserver.observe(ecosystem);
     return () => { observer.disconnect(); connectObserver.disconnect(); items.forEach((item) => item.classList.remove("reveal-ready")); };
-  }, []);
+  }, [pathname]);
   return null;
 }
