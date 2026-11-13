@@ -3,3 +3,6 @@ design/
 .env*
 dev.log
 *.tsbuildinfo
+.chrome-*/
+.edge-*/
+.claude/
