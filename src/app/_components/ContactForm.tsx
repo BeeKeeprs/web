@@ -1,25 +1,53 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import InquiryPanel from "./InquiryPanel";
+import { farmInquiryFields } from "./farmInquiryFields";
+import FarmInquiryPreview from "./FarmInquiryPreview";
+
+type ContactResponse = { error?: string };
 
 export default function ContactForm() {
-  const [product, setProduct] = useState("스마트벌통");
-  useEffect(() => { if (new URLSearchParams(window.location.search).get("product") === "gate") setProduct("스마트개폐기"); }, []);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = ["아워비 제품 문의", "", ...["이름", "연락처", "지역·작물", "필요한 제품", "문의 내용"].map((key) => `${key}: ${key === "필요한 제품" ? product : data.get(key) ?? ""}`)].join("\n");
-    window.location.href = `mailto:da.young.yun13@gmail.com?subject=${encodeURIComponent(`[아워비 문의] ${product}`)}&body=${encodeURIComponent(body)}`;
-  };
+  const router = useRouter();
+
+  async function send(values: Record<string, string>) {
+    // The inquiry API wants one message and a product: fold the farm details into the message.
+    const requested = new URLSearchParams(window.location.search).get("product");
+    const interestProduct = requested === "gate" || requested === "smart-hive" ? requested : "all";
+    const message = [
+      `농장 지역: ${values["농장 지역"]}`,
+      `재배 작물: ${values["재배 작물"]}`,
+      `수정벌 사용 현황: ${values["수정벌 사용 현황"]}`,
+      "",
+      values["문의 내용"] || "(문의 내용 없음)",
+    ].join("\n");
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values["성함"],
+        phone: values["연락처"] || null,
+        email: values["이메일"] || null,
+        organization: null,
+        interestProduct,
+        message,
+      }),
+    });
+    const result = (await response.json()) as ContactResponse;
+    if (!response.ok) throw new Error(result.error || "문의 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+    router.push("/contact/complete");
+  }
+
   return (
-    <form className="contact-form" onSubmit={submit}>
-      <div className="form-pair"><label>이름<input name="이름" required placeholder="성함을 알려주세요" /></label><label>연락처<input name="연락처" required placeholder="전화번호 또는 이메일" /></label></div>
-      <label>지역·작물<input name="지역·작물" placeholder="예: 밀양 · 딸기" /></label>
-      <label>관심 제품<select value={product} onChange={(event) => setProduct(event.target.value)}><option>스마트벌통</option><option>스마트개폐기</option><option>두 제품 모두</option></select></label>
-      <label>문의 내용<textarea name="문의 내용" rows={6} required placeholder="벌통 수량, 전원·네트워크 환경, 궁금한 점을 적어주세요." /></label>
-      <button type="submit" className="button-orange">이메일 앱에서 문의 보내기 <ArrowUpRight size={19} /></button>
-      <p>버튼을 누르면 이메일 앱이 열립니다. 이메일 앱에서 보내기를 눌러야 접수됩니다.</p>
-    </form>
+    process.env.NODE_ENV === "development" ? <FarmInquiryPreview /> :
+    <InquiryPanel
+      title="문의 남기기"
+      description="농장 정보를 적어주시면 알맞은 제품과 가격을 안내해 드릴게요."
+      fields={farmInquiryFields}
+      submitLabel="문의 보내기"
+      note="선택 항목은 비워두셔도 돼요."
+      onSubmit={send}
+    />
   );
 }
