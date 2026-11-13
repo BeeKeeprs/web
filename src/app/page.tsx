@@ -1,90 +1,122 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Flower2, Snowflake, Sun } from "lucide-react";
+import AirRipple from "./_components/AirRipple";
+import HomeSnap from "./_components/HomeSnap";
+import AppShowcase from "./_components/AppShowcase";
 import ProductCard from "./_components/ProductCard";
+import RowList from "./_components/RowList";
+import CtaBanner from "./_components/CtaBanner";
+import ProductMotion from "./_components/ProductMotion";
+
+// Figures follow the pilot plan (to be verified in the PoC).
+const seasons = [
+  {
+    key: "mild", name: "봄 · 가을", Icon: Flower2, crops: "",
+    line: "일교차에도 한결같은 벌통 온도. 농약 치는 날엔, 앱에서 출입구를 닫으면 끝.",
+    stats: [["24시간 정온제어", "반도체 통한 설정온도 유지 및 AI관리"], ["출입문 제어", "벌 마릿수 · 시간 · 과수분 · 미수분 제어"]],
+  },
+  {
+    key: "summer", name: "여름", Icon: Sun, crops: "멜론 · 토마토 · 참외",
+    line: "무더위 속 벌 사용일 2주. 시원한 벌통으로 45일까지.",
+    stats: [["2주 → 45일", "벌 사용 기간"], ["65만 → 약 10만 원", "벌 구매비 · 150평 3개월 기준"]],
+  },
+  {
+    key: "winter", name: "겨울", Icon: Snowflake, crops: "딸기", badge: "100일 무료 체험",
+    line: "추위에 줄어드는 벌 활동. 따뜻한 벌통으로 더 오래, 더 활발하게.",
+    stats: [["+68일", "벌 사용 기간"], ["+20%", "벌 활동량"]],
+  },
+];
 
 const faqs = [
   ["벌통 온도는 직접 정할 수 있나요?", "네. 앱에서 목표 온도를 직접 설정하고, 벌통 안팎의 온도와 습도를 확인할 수 있습니다."],
   ["농약을 칠 때 벌통을 옮기지 않아도 되나요?", "스마트개폐기로 출입구를 관리할 수 있습니다. 농약 살포 시 필요한 이동·안전 조치는 살포 조건에 따라 달라지므로 문의 부탁드립니다."],
-  ["벌 구입비는 얼마나 아낄 수 있나요?", "봉군 단가와 재구입 횟수에 따라 다릅니다. 제품 상세페이지에서 농가의 숫자를 넣어 절감 가능액을 가정해 볼 수 있습니다."],
-  ["AI가 벌통을 알아서 조작하나요?", "온도 제어는 농가가 설정한 목표 온도를 따릅니다. AI는 수집된 출입·온습도 기록을 활동 리포트로 정리하고 관리 질문에 참고할 정보를 제공합니다."],
+  ["벌 구입비는 얼마나 아낄 수 있나요?", "벌 사용 기간과 교체 횟수, 봉군 구입 단가에 따라 달라집니다. 겨울·여름 실증에서 실제 구매비 변화를 확인할 계획입니다."],
+  ["AI가 벌통을 알아서 조작하나요?", "온도와 개폐기는 정해둔 기준에 따라 작동합니다. AI는 기록의 이상과 변화를 분석해 알림과 리포트로 보여드립니다."],
   ["우리 농장에도 설치할 수 있나요? 가격은요?", "벌통 형태, 수량, 설치 환경에 맞춰 안내합니다. 제품 가격과 설치 가능 여부는 문의하기로 상담해 주세요."],
 ];
 
 export default function HomePage() {
+  const revealLetters = (text: string, offset = 0) => Array.from(text).map((letter, index) => (
+    <span className="hero-title-char" aria-hidden="true" key={`${offset}-${index}`} style={{ animationDelay: `${(offset + index) * 45}ms` }}>
+      {letter === " " ? "\u00a0" : letter}
+    </span>
+  ));
+
   return (
-    <main>
-      <section className="hero section-wrap" id="top">
-        <div className="hero-copy" data-reveal>
-          <span className="eyebrow"><i /> SMART BUMBLEBEE HIVE</span>
-          <h1>벌통의 온도,<br /><em>농가가 직접 정하다.</em></h1>
-          <p>목표 온도는 농가가 정하고,<br />벌통은 그 설정에 맞춰 작동합니다.<br />현장의 변화는 앱에 기록됩니다.</p>
-          <div className="hero-actions"><Link className="button-orange glow-cta" href="/products">아워비 제품 둘러보기 <ArrowRight size={21} /></Link></div>
+    <main className="home">
+      <HomeSnap />
+      <section className="hero hero-story" id="top">
+        <div className="hero-story-track" data-scroll-story>
+          <div className="hero-story-stage">
+            <AirRipple />
+            <div className="hero-story-shade" aria-hidden="true" />
+            <ProductMotion />
+            <div className="hero-story-text">
+              <h1 className="hero-story-title" data-scroll-text aria-label="반도체 AIoT 수정벌 관리 시스템, 농사의 결실을 더 크게.">
+                <span className="hero-story-line">{revealLetters("반도체 AIoT")}</span>
+                <span className="hero-story-line">{revealLetters("수정벌 관리 시스템,", 8)}</span>
+                <span className="hero-story-line hero-story-line-accent"><em>{revealLetters("농사의 결실을 더 크게.", 19)}</em></span>
+              </h1>
+              <div className="hero-story-copy">
+                <p>스마트벌통은 설정 온도를 유지하고,<br />스마트개폐기는 벌의 출입을 기록합니다.<br />현장 기록을 자동으로 모아 비용과 수확의 변화를 살펴봅니다.</p>
+                <Link className="ob-btn hero-story-products-link" href="/products">아워비 제품 둘러보기 <ArrowRight size={18} /></Link>
+              </div>
+            </div>
+            <div className="hero-story-bottom">
+              <a className="hero-story-scroll" href="#ecosystem">아워비 기술 보기 <ArrowDown size={16} /></a>
+              <section className="home-pilot-banner section-wrap" aria-label="100일 실증농가 모집">
+                <div><span>100일 무상 사용 · 실증농가 모집</span><h2>수정벌 사용 농가를 찾습니다.</h2><p>스마트벌통을 직접 써보고, 농장의 변화를 함께 확인해요.</p></div>
+                <Link className="ob-btn" href="/pilot">실증 참여 알아보기 <ArrowRight size={18} /></Link>
+              </section>
+            </div>
+          </div>
         </div>
-        <div className="hero-product" data-reveal>
-          <div className="hero-image"><Image src="/images/product/hero-greenhouse.png" alt="딸기 온실에 놓인 올리브색 아워비 스마트벌통" fill priority sizes="(max-width: 850px) 100vw, 56vw" /></div>
-        </div>
-        <a className="scroll-cue" href="#ecosystem">SCROLL TO EXPLORE <ArrowDown size={14} /></a>
       </section>
 
-      <section className="home-pilot-banner section-wrap" aria-label="100일 실증농가 모집" data-reveal>
-        <div><span>겨울철 현장 실험</span><h2>수정벌 사용 농가를 찾습니다.</h2><p>아워비 스마트벌통을 100일간 무상으로 사용하고, 현장의 경험을 들려주세요.</p></div>
-        <Link href="/pilot">100일 실증농가 모집 보기 <ArrowRight size={19} /></Link>
-      </section>
-
-      <section className="ecosystem-section" id="ecosystem">
+      <section className="ecosystem-section" id="ecosystem" data-snap-stop>
         <div className="section-wrap">
           <div className="ecosystem-heading" data-reveal>
-            <div><span className="eyebrow">OURBEE ECOSYSTEM</span><h2>벌통부터 앱까지,<br /><em>하나의 흐름으로.</em></h2></div>
-            <p>스마트벌통, 모바일 앱, 스마트개폐기를 연결해<br />온도와 출입의 기록을 한 화면에서 봅니다.</p>
+            <div className="ecosystem-heading-main">
+              <h2>수정벌 관리는 처음부터 끝까지, 아워비가.</h2>
+            </div>
           </div>
-          <div className="ecosystem-track">
-            <Link className="ecosystem-item" href="/products/smart-hive" data-reveal>
-              <div className="ecosystem-media ecosystem-hive"><Image src="/images/product/hive-studio.png" alt="아워비 스마트벌통 제품 이미지" fill sizes="(max-width: 760px) 80vw, 390px" /></div>
-              <div className="ecosystem-node"><span>01</span></div>
-              <h3>스마트벌통 정온제어</h3><p>농가가 정한 목표 온도를 따라 벌통 안의 환경을 관리합니다.</p>
-            </Link>
-            <Link className="ecosystem-item" href="/app" data-reveal>
-              <div className="ecosystem-media ecosystem-app"><div className="ecosystem-phone"><Image src="/images/product/app-control.png" alt="목표 온도와 벌통 안팎의 온습도를 보여주는 아워비 앱" fill sizes="(max-width: 760px) 60vw, 250px" /></div></div>
-              <div className="ecosystem-node"><span>02</span></div>
-              <h3>아워비 모바일 앱</h3><p>내외부 온습도, 시간별 기록, 목표 온도와 출입 데이터를 확인합니다.</p>
-            </Link>
-            <Link className="ecosystem-item" href="/products/gate" data-reveal>
-              <div className="ecosystem-media ecosystem-gate"><Image src="/images/product/gate-studio.png" alt="아워비 스마트개폐기 제품 이미지" fill sizes="(max-width: 760px) 80vw, 310px" /></div>
-              <div className="ecosystem-node"><span>03</span></div>
-              <h3>스마트개폐기 출입 관리</h3><p>출입구를 즉시 또는 예약 시간에 관리하고 출입량을 기록합니다.</p>
-            </Link>
+          <div className="shop-grid">
+            <ProductCard slug="smart-hive" index={0} describe />
+            <ProductCard slug="gate" index={1} describe />
           </div>
-          <Link className="ecosystem-more" href="/app">앱과 데이터 자세히 보기 <ArrowUpRight size={18} /></Link>
         </div>
       </section>
 
-      <section className="pain-section" id="farm-story">
+      <section className="app-showcase-section" id="app" data-snap-stop>
         <div className="section-wrap">
-          <div className="pain-intro" data-reveal><span className="eyebrow eyebrow-light">WE KNOW THE FIELD</span><h2>농가에서 정말 번거로운 것들.</h2><p>벌통을 보러 가는 일이 아니라, 옮기고 다시 사고 온도를 걱정하는 일.</p></div>
-          <div className="pain-list">
-            <article data-reveal><span>01</span><h3>농약 칠 때마다<br />벌통을 옮기는 수고.</h3><p>출입구 관리를 더 편하게.</p></article>
-            <article data-reveal><span>02</span><h3>짧아지는 여름 사용기간,<br />반복되는 벌 구매.</h3><p>벌이 머무는 온도를 더 세심하게.</p></article>
-            <article data-reveal><span>03</span><h3>날씨가 흔들리면<br />걱정되는 벌의 활동.</h3><p>환경과 활동의 변화를 기록으로.</p></article>
+          <AppShowcase />
+        </div>
+      </section>
+
+      <section className="season-section" id="seasons" data-snap-stop>
+        <div className="section-wrap">
+          <div className="season-heading" data-reveal>
+            <h2>벌 구매비는 줄이고 상품 수확은 늘려,<br />농가 수익을 더 크게 만듭니다.</h2>
+            <p>벌통을 옮기고, 다시 사고, 온도를 걱정하는 일. 이제 그만.</p>
+          </div>
+          <div className="season-grid">
+            {seasons.map(({ key, name, Icon, crops, badge, line, stats }) => (
+              <article className={`season-card season-${key}`} key={key} data-reveal>
+                {badge && <span className="season-badge"><i aria-hidden="true" />{badge}</span>}
+                <div className="season-top"><div className="season-name"><Icon size={18} aria-hidden="true" />{name}</div>{crops && <span className="season-crops">{crops}</span>}</div>
+                <p className="season-line">{line.split(/(?<=\.) /).map((sentence, index) => <span key={index}>{sentence}</span>)}</p>
+                <dl>{stats.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+                {badge && <Link className="season-cta season-cta-primary" href="/pilot">스마트벌통 100일 무료 체험 <ArrowRight size={18} aria-hidden="true" /></Link>}
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="shop-section" id="products">
-        <div className="section-wrap">
-          <div className="shop-heading" data-reveal><div><span className="eyebrow">OUR PRODUCTS</span><h2>농가의 하루에 맞춘<br />아워비의 제품.</h2></div><Link className="button-text" href="/products">모든 제품 보기 <ArrowUpRight size={18} /></Link></div>
-          <div className="shop-grid"><ProductCard slug="smart-hive" /><ProductCard slug="gate" index={1} /></div>
-          <p className="shop-note">제품별 구성과 가격은 상세페이지에서 문의할 수 있습니다.</p>
-        </div>
-      </section>
 
-      <section className="heritage-preview" id="heritage">
-        <div className="heritage-photo"><Image src="/images/strawberry-greenhouse.png" alt="딸기꽃이 피어 있는 시설하우스" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
-        <div className="heritage-copy" data-reveal><span className="eyebrow eyebrow-light">OUR HERITAGE</span><h2>농가의 불편에서 시작해,<br /><em>현장으로 걸어온 아워비.</em></h2><p>수정벌을 한 철의 소모품으로만 보지 않고, 벌이 머무는 환경과 농가의 작업을 함께 살폈습니다.</p><div className="heritage-stats"><div><strong>2025</strong><span>현장의 문제에서 출발</span></div><div><strong>1<span>건</span></strong><span>특허 출원</span></div><div><strong>2<span>종</span></strong><span>스마트벌통·개폐기</span></div></div><Link className="button-outline-light" href="/about">수상과 발자취 보기 <ArrowUpRight size={18} /></Link></div>
-      </section>
 
-      <section className="faq-section section-wrap" id="faq"><div className="faq-heading" data-reveal><span className="pill-label">FAQ</span><h2>농가에서 많이 묻는 질문.</h2></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question} data-reveal><summary>{question}<span>⌄</span></summary><p>{answer}</p></details>)}</div></section>
-      <section className="last-cta section-wrap"><div data-reveal><span className="eyebrow eyebrow-light">START WITH OURBEE</span><h2>우리 농장에도<br />맞을까요?</h2><p>작물, 벌통 수량과 설치 환경을 알려주세요.</p><Link className="button-orange glow-cta" href="/contact">도입 문의하기 <ArrowUpRight size={19} /></Link></div></section>
+      <section className="faq-section section-wrap" id="faq"><div className="faq-heading" data-reveal><h2>농가에서 많이 묻는 질문.</h2></div><div data-reveal><RowList items={faqs.map(([question, answer]) => ({ title: question, body: answer }))} /></div></section>
+      <CtaBanner title={<>우리 농장에도<br />맞을까요?</>} description="작물, 벌통 수량과 설치 환경을 알려주세요." href="/contact" label="도입 문의하기" />
     </main>
   );
 }
