@@ -1,0 +1,73 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:P;src:url("file:///D:/webeeweb/public/font/PretendardVariable.woff2") format("woff2");font-weight:100 900}
+*{box-sizing:border-box;margin:0;padding:0;word-break:keep-all}
+body{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:P,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 760px at 92% 4%,rgba(228,236,200,.42),transparent 62%),radial-gradient(800px 720px at -6% 102%,rgba(110,175,135,.40),transparent 60%),linear-gradient(160deg,#5B8470 0%,#3F6350 42%,#2C4739 100%)}
+.grain{position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:.085;mix-blend-mode:overlay;pointer-events:none;z-index:50}
+.abs{position:absolute}
+.hair{position:absolute;inset:22px;border:1.5px solid rgba(213,222,180,.22);border-radius:34px;pointer-events:none;z-index:40}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.20),rgba(255,255,255,.07));border:1.5px solid rgba(255,255,255,.28);backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35);border-radius:28px}
+.glass.dk{background:linear-gradient(160deg,rgba(28,45,37,.88),rgba(28,45,37,.76));border-color:rgba(213,222,180,.35)}
+.pill{display:inline-flex;align-items:center;gap:12px;border-radius:999px;font-weight:800}
+.eyebrow{font-size:27px;letter-spacing:.2px;color:#D5DEB4;padding:11px 24px 11px 20px;border:1.5px solid rgba(213,222,180,.5);background:rgba(213,222,180,.08)}
+.eyebrow i{width:12px;height:12px;border-radius:50%;background:#D5DEB4;box-shadow:0 0 0 6px rgba(213,222,180,.18)}
+.medal{position:absolute;border-radius:50%;background:radial-gradient(circle at 32% 26%,#E9F0CB,#D5DEB4 62%,#C3CE9C);color:#1E2F27;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 7px rgba(213,222,180,.30),0 22px 48px rgba(0,0,0,.45);z-index:20;transform:rotate(8deg)}.medal::after{content:"";position:absolute;inset:11px;border-radius:50%;border:2px solid rgba(30,47,39,.32)}.medal b{font-weight:800;letter-spacing:-2px;line-height:1}.medal span{font-weight:800;letter-spacing:-.5px;margin-top:6px}
+.offer{background:#D5DEB4;color:#1E2F27;font-size:36px;padding:16px 38px;box-shadow:0 0 0 6px rgba(213,222,180,.28),0 18px 40px rgba(0,0,0,.4)}
+.h1{font-weight:800;letter-spacing:-2.4px;line-height:1.12;text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.h1 em{font-style:normal;color:#D5DEB4}
+.sub{font-weight:600;color:#E4ECD8;letter-spacing:-.6px;line-height:1.38;text-shadow:0 2px 14px rgba(20,36,28,.5)}
+.cta{display:flex;align-items:center;justify-content:space-between;background:#D5DEB4;color:#1E2F27;font-weight:800;border-radius:26px;box-shadow:0 18px 44px rgba(0,0,0,.42),0 0 0 6px rgba(213,222,180,.16)}
+.cta svg{flex:none}
+.logo{font-weight:800;letter-spacing:-1px}
+.tag{font-weight:700;color:#D5DEB4;letter-spacing:-.4px}
+.legal{color:#E4ECD8;opacity:.95;line-height:1.35;text-shadow:0 1px 8px rgba(20,36,28,.55)}
+.chain{display:flex;align-items:center;gap:10px}
+.chain span{font-weight:800;color:#F3F0E4;border:1.5px solid rgba(243,240,228,.45);border-radius:999px;background:rgba(255,255,255,.07)}
+.chain b{color:#D5DEB4;font-weight:700}
+
+.phone{position:absolute;background:linear-gradient(145deg,#4A5650,#0E1612 40%,#2A332E);box-shadow:0 60px 120px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.08) inset,0 0 0 1.5px rgba(0,0,0,.6)}
+.screen{position:absolute;overflow:hidden;background:#EEF0F3}
+.island{position:absolute;left:50%;transform:translateX(-50%);background:#05090A;border-radius:99px;z-index:5}
+
+.sumcard{padding:16px 18px 14px}
+.sm-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.sm-t{font-size:15px;font-weight:800}.sm-s{font-size:12px;color:#7B8794;margin-top:2px}
+.sm-v{font-size:46px;font-weight:800;line-height:1}.sm-v small{font-size:22px;font-weight:700}
+.sm-line{height:1px;background:#E8EBEE;margin:12px 0 10px}
+.sm-foot{font-size:12.5px;color:#6B7684;display:flex;align-items:center;gap:6px}.sm-foot b{color:#1B2530}.sm-foot i{width:4px;height:4px;border-radius:50%;background:#C3C9D0}.sm-foot em{font-style:normal;color:#16813F;font-weight:800}
+.repcard{padding:16px 18px 14px}
+.repcard .more{font-size:12.5px;color:#6B7684}
+.legend{display:flex;gap:14px;margin-top:10px;font-size:12px;color:#5B6572;font-weight:700}
+.legend span{display:flex;align-items:center;gap:6px}.legend u{display:inline-block;width:14px;height:4px;border-radius:3px}
+.l-in{background:#1B2530}.l-out{background:#E08A2B}.l-band{background:#D7EBDD;height:10px!important;width:16px!important;border-radius:3px}
+.chart{width:100%;margin-top:6px;display:block}
+.axis{display:flex;justify-content:space-between;font-size:11.5px;color:#9AA3AE;margin-top:2px}
+.rstats{display:flex;margin-top:10px;border-top:1px solid #E8EBEE;padding-top:10px}
+.rstats div{flex:1;text-align:center;border-right:1px solid #E8EBEE}.rstats div:last-child{border-right:0}
+.rstats span{display:block;font-size:11.5px;color:#8B95A1}.rstats b{font-size:18px;font-weight:800}.rstats b.o{color:#E08A2B}
+
+.app{position:absolute;left:0;top:0;width:390px;height:860px;background:#EEF0F3;color:#1B2530;padding:0 18px;font-family:P,sans-serif}
+.status{height:62px;display:flex;justify-content:space-between;align-items:center;padding:14px 8px 0;font-size:15px}
+.status span{letter-spacing:2px;font-size:11px}
+.card{background:#fff;border-radius:26px;margin-top:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(20,30,40,.05);color:#1B2530;font-family:P,sans-serif}
+.mini .card{margin-top:0;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.ct{display:flex;justify-content:space-between;align-items:center}.ct b{font-size:17px;font-weight:800}.ct span{font-size:12.5px;color:#7B8794;display:flex;align-items:center;gap:6px}.ct i{width:7px;height:7px;border-radius:50%;background:#16813F}
+.gz{width:100%;margin-top:-4px}
+.gl{text-align:center;color:#8B95A1;font-size:13px;margin-top:-76px}
+.gv{text-align:center;font-size:56px;font-weight:800;line-height:1.05}.gv small{font-size:22px;color:#8B95A1;font-weight:600;margin-left:2px}
+.gt{text-align:center;color:#8B95A1;font-size:13px;margin-top:2px}
+.gp{margin:16px auto 4px;width:max-content;background:#E7F3EA;color:#16813F;font-weight:800;font-size:13.5px;border-radius:30px;padding:8px 16px}
+.ctl{padding-bottom:18px}
+.st{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+.st .c{width:56px;height:56px;border-radius:50%;background:#F2F4F6;display:flex;align-items:center;justify-content:center}
+.sv{font-size:54px;font-weight:800;line-height:1}.sv small{font-size:20px;color:#8B95A1;font-weight:600}
+.sr{text-align:center;color:#8B95A1;font-size:12.5px;margin-top:10px}
+.sa{margin-top:16px;background:#1E2F27;color:#D5DEB4;border-radius:16px;text-align:center;font-weight:800;font-size:17px;padding:15px 0}
+</style></head><body><img class="abs" src="file:///D:/webeeweb/public/images/product/hero-greenhouse.png" style="left:0;top:0;width:100%;height:1080px;object-fit:cover;object-position:72% 50%"/>
+    <div class="abs" style="inset:0;background:linear-gradient(90deg,rgba(24,40,31,.95) 0%,rgba(24,40,31,.80) 36%,rgba(24,40,31,.10) 70%),linear-gradient(0deg,rgba(24,40,31,.97) 0%,rgba(24,40,31,0) 48%)"></div>
+    <div class="hair"></div>
+    <div class="abs" style="left:64px;top:150px;display:flex;flex-direction:column;align-items:flex-start;gap:12px"><div class="glass" style="display:flex;align-items:center;gap:12px;padding:11.200000000000001px 17.36px;font-size:28px;font-weight:800;border-radius:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D5DEB4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>농어촌공사장상</div><div class="glass" style="display:flex;align-items:center;gap:12px;padding:11.200000000000001px 17.36px;font-size:28px;font-weight:800;border-radius:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D5DEB4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>농정원장상</div><div class="glass" style="display:flex;align-items:center;gap:12px;padding:11.200000000000001px 17.36px;font-size:28px;font-weight:800;border-radius:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D5DEB4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>특허 출원</div><div class="glass" style="display:flex;align-items:center;gap:12px;padding:11.200000000000001px 17.36px;font-size:28px;font-weight:800;border-radius:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D5DEB4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>혁신제품 준비중</div><div class="glass" style="display:flex;align-items:center;gap:12px;padding:11.200000000000001px 17.36px;font-size:28px;font-weight:800;border-radius:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D5DEB4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>국립농업과학원 기술이전 준비중</div></div>
+    <div class="abs h1" style="left:64px;top:590px;font-size:78px;width:940px">밀양 딸기 하우스에서<br/>먼저 <em>써보고</em> 있습니다.</div>
+    <div class="abs sub" style="left:64px;top:772px;font-size:32px;width:960px">이번 겨울, 수익 변화를 함께 기록할 농가를 찾습니다.</div>
+    <div class="abs cta" style="left:64px;top:854px;width:470px;height:92px;font-size:36px;padding:0 34px">무료 실증 신청하기<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E2F27" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="medal" style="right:46px;top:92px;width:200px;height:200px"><b style="font-size:56px">100일</b><span style="font-size:30px">무료 실증</span></div><div class="grain"></div></body></html>
